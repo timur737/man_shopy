@@ -1,0 +1,75 @@
+@import 'variables';
+
+.header {
+  padding: 20px 0 0 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .personal {
+      margin-right: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
+  }
+  &__logo {
+    display: flex;
+
+    img {
+      margin-right: 15px;
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%; 
+  z-index: 100;
+}
+
+.search-button {
+  margin-right: 13px;
+}
+.cart-button {
+  position: relative;
+  margin-right: 13px;
+}
+
+.cart-count {
+  position: absolute;
+  content: '';
+  top: -3px;
+  right: -7px;
+  font-weight: 600;
+  background-color: #ffffff;
+}
+
+.nav__control {
+  display: flex;
+}
