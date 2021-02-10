@@ -1,0 +1,13 @@
+.categories {
+  ul {
+    display: flex;
+
+    li {
+      margin-right: 15px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 2px solid #000000;
+      }
+    }
+  }
+}
