@@ -36,3 +36,4 @@ class Product(models.Model):
         """Unicode representation of Product."""
         return self.title
     
+

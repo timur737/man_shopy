@@ -24,7 +24,7 @@ SECRET_KEY = 'os.environ.get(simple)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'jastegri.pythonanywhere.com', 'f9e2fa0fa8b0.ngrok.io']
 
 # Application definition
 
@@ -35,9 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_jwt',
     'rest_framework_json_api',
     'django_filters',
     'djoser',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -55,6 +57,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+
+AUTH_USER_MODEL = 'user.User'
+
+AUTHENTICATION_BACKENDS = ['api.backends.EmailBackend']
+
 
 TEMPLATES = [
     {
@@ -90,9 +97,6 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
@@ -102,11 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Asia/Bishkek'
 
@@ -132,9 +135,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
         # 'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
     'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework_json_api.pagination.PageNumberPagination',
@@ -145,18 +151,25 @@ REST_FRAMEWORK = {
 }
 
 
-JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7)  # default
-}
 
 
 DJOSER = {
-    'SEND_ACTIVATION_EMAIL': True,
-    'SEND_CONFIRMATION_EMAIL': True,
-    'ACTIVATION_URL': 'auth/activate/{uid}/{token}/',
+    # 'SEND_ACTIVATION_EMAIL': True,
+    # 'SEND_CONFIRMATION_EMAIL': True,
+    # 'ACTIVATION_URL': 'auth/activate/{uid}/{token}/',
+    # 'LOGIN_FIELD': 'email',
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/confirm/{uid}/{token}/',
-    'TOKEN_MODEL': None
+    'TOKEN_MODEL': None,
+    'SERIALIZERS': {
+        'user_create': 'api.serializers.UserRegistrationSerializer',
+        'current_user': 'api.serializers.UserMe'
+
+    },
 }
+
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+# ]
