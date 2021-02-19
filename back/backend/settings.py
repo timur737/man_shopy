@@ -24,7 +24,7 @@ SECRET_KEY = 'os.environ.get(simple)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'jastegri.pythonanywhere.com', 'f9e2fa0fa8b0.ngrok.io']
+ALLOWED_HOSTS = ['157.230.208.125', '0.0.0.0', 'localhost', '127.0.0.1', 'jastegri.pythonanywhere.com', 'f9e2fa0fa8b0.ngrok.io']
 
 # Application definition
 
@@ -171,5 +171,5 @@ DJOSER = {
 CORS_ORIGIN_ALLOW_ALL=False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
+   'http://157.230.208.125:3000',
 ]

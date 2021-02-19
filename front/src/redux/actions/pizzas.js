@@ -3,7 +3,7 @@ import axios from 'axios';
 const fetchPizzas = (category) => (dispatch) => {
   dispatch(setLoaded(false));
   axios
-    .get(`https://74cc97f30d42.ngrok.io/api/?category=${category == null ? '' : category}`)
+    .get(`http://157.230.208.125:8000/api/?category=${category == null ? '' : category}`)
     .then(({ data }) => {
       dispatch(setPizzas(data.results));
     });

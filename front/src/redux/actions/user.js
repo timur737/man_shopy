@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'https://f9e2fa0fa8b0.ngrok.io';
+const url = 'http://157.230.208.125:8000';
 
 export const signUpUser = (user) => (dispatch) => {
   dispatch(signUpUserStarted());
