@@ -10,7 +10,7 @@ function cart(state = initialState, action) {
   }
 
   switch (action.type) {
-    case 'ADD_PIZZAS': {
+    case 'ADD_CLOTHES': {
       const currentPizzaItems = !state.items[action.payload.id]
         ? [action.payload]
         : [...state.items[action.payload.id].items, action.payload];

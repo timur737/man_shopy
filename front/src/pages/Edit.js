@@ -29,7 +29,7 @@ function Edit() {
 
   return (
     <div className="container">
-      <h3 style={{ marginBottom: '20px' }}>Редоктировать </h3>
+      <h3 style={{ marginBottom: '20px' }}>Редактировать</h3>
       {loading ? (
         <div
           style={{

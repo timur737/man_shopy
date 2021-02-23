@@ -1,7 +1,7 @@
-function addCartPizza(pizzaObj) {
+function addCartClothes(clothesObj) {
   return {
-    type: 'ADD_PIZZAS',
-    payload: pizzaObj,
+    type: 'ADD_CLOTHES',
+    payload: clothesObj,
   };
 }
 
@@ -32,4 +32,4 @@ function decrementCount(id) {
   };
 }
 
-export { addCartPizza, clearCart, removeCartItem, incrementCount, decrementCount };
+export { addCartClothes, clearCart, removeCartItem, incrementCount, decrementCount };

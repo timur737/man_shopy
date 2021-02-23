@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import {
   changePassword,
   changePasswordFailure,
@@ -9,8 +11,9 @@ import {
 
 function ChangePass({ id }) {
   const { register, errors, handleSubmit, watch } = useForm();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const history = useHistory();
   const pass = React.useRef({});
   pass.current = watch('password', '');
 
@@ -19,6 +22,7 @@ function ChangePass({ id }) {
     dispatch(changePassword(values, id, token))
       .then(({ data }) => {
         dispatch(changePasswordSuccess(data));
+        history.push('/account');
       })
       .catch((err) => {
         if (err.request) {

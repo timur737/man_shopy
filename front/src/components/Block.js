@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from '.';
 
-function PizzaBlock({ id, title, price, img, onAddPizza, addedCount }) {
-  const handlePizza = () => {
+function Block({ id, title, price, img, onAddClothes, addedCount }) {
+  const handleClothes = () => {
     const obj = {
       id,
       title,
@@ -10,16 +10,16 @@ function PizzaBlock({ id, title, price, img, onAddPizza, addedCount }) {
       price,
     };
 
-    onAddPizza(obj);
+    onAddClothes(obj);
   };
 
   return (
     <div className="block">
-      <img className="block__image" src={img} alt="Pizza" />
+      <img className="block__image" src={img} alt="Clothes" />
       <h4 className="block__title">{title}</h4>
       <div className="block__bottom">
         <div className="block__price">{price} USD</div>
-        <Button onClick={handlePizza} className="btn1">
+        <Button onClick={handleClothes} className="btn1">
           <span> В корзину</span>
           {addedCount && <i>{addedCount}</i>}
         </Button>
@@ -28,4 +28,4 @@ function PizzaBlock({ id, title, price, img, onAddPizza, addedCount }) {
   );
 }
 
-export default PizzaBlock;
+export default Block;

@@ -6,18 +6,16 @@ import logo from '../assets/img/logo.png';
 import cartImg from '../assets/img/cart.png';
 
 import { Catigories, LoginPopup } from '../components';
-import { fetchPizzas } from '../redux/actions/pizzas';
 import { setCategory } from '../redux/actions/filters';
+import { fetchClothes } from '../redux/actions/clothes';
 
 function Header() {
   const { itemCount } = useSelector(({ cart }) => cart);
-  const { category } = useSelector(({ filterReducer }) => filterReducer);
+  const { category, categoryNames } = useSelector(({ filterReducer }) => filterReducer);
   const dispatch = useDispatch();
 
-  const categoryNames = ['Мужские', 'Женские', 'Детские'];
-
   React.useEffect(() => {
-    dispatch(fetchPizzas(category));
+    dispatch(fetchClothes(category));
     // eslint-disable-next-line
   }, [category]);
 

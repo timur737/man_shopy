@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function Catigories({ items, onClickItem }) {
@@ -18,9 +17,5 @@ function Catigories({ items, onClickItem }) {
     </div>
   );
 }
-
-Catigories.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 
 export default Catigories;

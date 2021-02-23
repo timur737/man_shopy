@@ -2,19 +2,19 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Block, SortPopup } from '../components';
-import { addCartPizza } from '../redux/actions/cart';
+import { Block } from '../components';
+
+import { addCartClothes } from '../redux/actions/cart';
 
 function Home() {
   const dispatch = useDispatch();
 
-  const { items, isLoaded } = useSelector(({ pizzasReducer }) => {
-    return { items: pizzasReducer.items, isLoaded: pizzasReducer.isLoaded };
+  const { items, isLoaded } = useSelector(({ clothesReducer }) => {
+    return { items: clothesReducer.items, isLoaded: clothesReducer.isLoaded };
   });
 
-  const { category } = useSelector(({ filterReducer }) => filterReducer);
+  const { category, categoryNames } = useSelector(({ filterReducer }) => filterReducer);
   const cartItems = useSelector(({ cart }) => cart.items);
-  const categoryNames = ['Мужские', 'Женские', 'Детские'];
 
   function loadedBlock(key) {
     return (
@@ -34,16 +34,12 @@ function Home() {
     );
   }
 
-  function addPizzaToCart(obj) {
-    dispatch(addCartPizza(obj));
+  function addClothesToCart(obj) {
+    dispatch(addCartClothes(obj));
   }
 
   return (
     <div className="container">
-      <div className="content__top">
-        {/* <SortPopup onClickSortBy={onSelectSortBy} items={sortItem} sortBy={sortBy} /> */}
-      </div>
-
       {category === null ? (
         <div className="content__main">
           <div className="content__body">
@@ -63,7 +59,7 @@ function Home() {
         {isLoaded
           ? items.map((item) => (
               <Block
-                onAddPizza={addPizzaToCart}
+                onAddClothes={addClothesToCart}
                 addedCount={cartItems[item.id] && cartItems[item.id].items.length}
                 key={item.id}
                 {...item}

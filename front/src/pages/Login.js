@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, loginUserFailure, loginUserSuccess } from '../redux/actions/user';
 import { useHistory, Redirect } from 'react-router-dom';
+
+import { loginUser, loginUserFailure, loginUserSuccess } from '../redux/actions/user';
 import { TabAuth } from '../components';
 
 function Login() {

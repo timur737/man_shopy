@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import filterReducer from './filters';
-import pizzasReducer from './pizzas';
+import clothesReducer from './clothes';
 import cart from './cart';
 import userReducer from './user';
 
 const rootReducer = combineReducers({
   filterReducer,
-  pizzasReducer,
+  clothesReducer,
   cart,
   userReducer,
 });

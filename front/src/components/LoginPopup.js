@@ -23,12 +23,14 @@ function LoginPopup() {
         localStorage.setItem('token', JSON.stringify(data.auth_token));
         dispatch(loginUserSuccess(data));
         setVisiblePopup(false);
+        setVisiblePopup(!visiblePopup);
         history.push('/account');
       })
       .catch((err) => {
         if (err.request) {
           dispatch(loginUserFailure(JSON.parse(err.request.response)));
           setVisiblePopup(false);
+          setVisiblePopup(!visiblePopup);
           history.push('/login');
         }
       });
@@ -67,10 +69,14 @@ function LoginPopup() {
           {isAuth ? (
             <div className="popup__list">
               <div>
-                <Link to="/account">Личный кабинет</Link>
+                <Link onClick={() => setVisiblePopup(!visiblePopup)} to="/account">
+                  Личный кабинет
+                </Link>
               </div>
               <div>
-                <Link to="/edit">Редоктировать</Link>
+                <Link onClick={() => setVisiblePopup(!visiblePopup)} to="/edit">
+                  Редактировать
+                </Link>
               </div>
               <div>
                 <button className="btn form__btn" onClick={logoutButton}>
@@ -121,7 +127,10 @@ function LoginPopup() {
                 </div>
               </form>
               <p>
-                Впервые у нас? <Link to="/signup">Зарегистрироваться</Link>
+                Впервые у нас?{' '}
+                <Link onClick={() => setVisiblePopup(!visiblePopup)} to="/signup">
+                  Зарегистрироваться
+                </Link>
               </p>
             </div>
           )}
