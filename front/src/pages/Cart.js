@@ -22,9 +22,11 @@ function Cart() {
     }
   };
 
+  
   const onRemoveItem = (id) => {
     dispatch(removeCartItem(id));
   };
+  
 
   const incCount = (id) => {
     dispatch(incrementCount(id));
